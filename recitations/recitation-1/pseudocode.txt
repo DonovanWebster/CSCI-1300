@@ -1,8 +1,11 @@
 int getNumVowels(string)
     numVowels = 0
+    declare array of characters called vowels containing lower and uppercase vowels
     for i = 0 to 9
-        if string at i is a vowel (a, e, i, o, or u)
-            increment numVowels
+        for j = 0 to 9
+            if string at i = vowels at j
+                increase numVowels
+                break
     return numVowels
 
 main
