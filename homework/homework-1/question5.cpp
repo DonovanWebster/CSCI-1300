@@ -9,7 +9,7 @@ int main() {
     int knuts, sickles, galleons;
     int sickleRemainder, galleonsRemainder;
 
-    cout << "Enter the number of knuts:" << endl;
+    cout << "Enter the number of Knuts:" << endl;
     cin >> knuts;
 
     galleons = knuts / (17 * 29);
