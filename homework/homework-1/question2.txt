@@ -1,0 +1,7 @@
+1. create variables for side length, height, and volume
+2. print "What is the side length of the base of the carton in inches?"
+3. get user input for the side length
+4. print "What is the height of the carton in inches?"
+5. get user input for the height
+6. calculate volume and convert to ounces using: ounces = 0.55 * cubic inches
+7. print "The carton has a volume of [value of volume variable to 2 decimal places] ounces."
