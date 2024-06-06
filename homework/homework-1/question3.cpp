@@ -1,3 +1,5 @@
+// Homework 1 - Problem 3
+
 #include <iostream>
 #include <iomanip>
 

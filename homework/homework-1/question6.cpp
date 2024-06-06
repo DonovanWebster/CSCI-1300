@@ -1,3 +1,5 @@
+// Homework 1 - Problem 6
+
 #include <iostream>
 #include <cmath>
 

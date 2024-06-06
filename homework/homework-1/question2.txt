@@ -1,3 +1,5 @@
+// Homework 1 - Problem 2
+
 1. create variables for side length, height, and volume
 2. print "What is the side length of the base of the carton in inches?"
 3. get user input for the side length
