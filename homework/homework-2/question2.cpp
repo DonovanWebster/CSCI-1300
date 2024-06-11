@@ -17,7 +17,7 @@ int main() {
     cout << "How tall are you in inches?" << endl;
     cin >> height;
     
-    if (height <= 0.0) {
+    if (height < 0.0) { // really should be <= to include characters but whatever, also nobody is 0 inches tall
         cout << "Please enter a valid input." << endl;
         return 1;
     }

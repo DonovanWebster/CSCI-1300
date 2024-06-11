@@ -11,7 +11,7 @@ int main() {
     cout << "Enter a positive integer:" << endl;
     cin >> num;
     if (num <= 0) {
-        cout << "Invalid input" << endl;
+        cout << "Invalid input." << endl;
         return 1;
     }
 

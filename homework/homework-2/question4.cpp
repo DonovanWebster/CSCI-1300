@@ -12,7 +12,7 @@ int main() {
     cout << "Enter stock prices over last 3 weeks" << endl;
     cin >> price1 >> price2 >> price3;
 
-    if (price1 <= 0 || price2 <= 0 || price3 <= 0) {
+    if (price1 < 0 || price2 < 0 || price3 < 0) {
         cout << "Please enter a valid input." << endl;
         return 1;
     }

@@ -13,7 +13,7 @@ int main() {
     cout << "How many ducks would you like to order?" << endl;
     cin >> ducks;
 
-    if (ducks <= 0) {
+    if (ducks < 0) {
         cout << "Please enter a valid input." << endl;
         return 1;
     }
