@@ -1,3 +1,5 @@
+// Homework 2 - Problem 7
+
 #include <iostream>
 
 using namespace std;
