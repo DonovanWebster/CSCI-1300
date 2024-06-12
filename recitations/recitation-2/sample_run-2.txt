@@ -1,0 +1,3 @@
+  How much water did you drink today? (in fl ozs)
+* -9
+  Invalid input

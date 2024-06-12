@@ -1,0 +1,3 @@
+  How much water did you drink today? (in fl ozs)
+* 72
+  You have hit your goal for the day! Great job getting hydrated!

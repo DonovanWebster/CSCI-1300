@@ -1,0 +1,13 @@
+create integer called water
+get user input for how much water they drank in fl oz and store the value in "water"
+
+if user input is negative, print "Invalid input" and end program
+
+if water >= 64
+    print "You have hit your goal for the day! Great job getting hydrated!"
+if 64 > water >= 32
+    print "You are doing great, you are half way to your goal! Get that water in! You have X fl oz left to drink."
+        where X is the amount of water left to drink
+if water < 32 
+    print "You are very, very dehydrated! Get that water in! You have X fl oz left to drink."
+        where X is the amount of water left to drink
