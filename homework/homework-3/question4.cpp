@@ -13,7 +13,7 @@ int main() {
     cin >> sub_str;
 
     int count = 0;
-    for (int i = 0; i < str.length() - sub_str.length(); i++) {
+    for (int i = 0; i < str.length() - (sub_str.length() - 1); i++) {
         if (str.substr(i, sub_str.length()) == sub_str) {
             count++;
         }

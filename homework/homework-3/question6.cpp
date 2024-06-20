@@ -19,7 +19,7 @@ void print(int n, int l) {
 
 int main() {
 
-    cout << "Enter length:" << endl;
+    cout << "Enter the length:" << endl;
     int length;
     cin >> length;
 

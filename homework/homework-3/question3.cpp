@@ -7,9 +7,9 @@ using namespace std;
 void printMenu() {
     cout << "Select a numerical option:" << endl;
     cout << "=== menu ===" << endl;
-    cout << "1. BLT sandwich" << endl;
-    cout << "2. Caprese sandwich" << endl;
-    cout << "3. Veggie sandwich" << endl;
+    cout << "1. BLT" << endl;
+    cout << "2. Caprese" << endl;
+    cout << "3. Veggie" << endl;
     cout << "4. Quit" << endl;
 }
 
@@ -45,9 +45,9 @@ void blt() {
         }
     }
     if (canMake) {
-        cout << "You can make a BLT sandwich." << endl;
+        cout << "You can make a BLT." << endl;
     } else {
-        cout << "You don't have enough for a BLT sandwich." << endl;
+        cout << "You don't have enough for a BLT." << endl;
     }
 }
 
@@ -72,19 +72,19 @@ void caprese() {
         }
     }
     if (canMake) {
-        cout << "You can make a Caprese sandwich." << endl;
+        cout << "You can make a caprese sandwich." << endl;
     } else {
-        cout << "You don't have enough for a Caprese sandwich." << endl;
+        cout << "You don't have enough for a caprese sandwich." << endl;
     }
 }
 
 void veggie() {
-    double neededIngredients[4] = {5, 4, 3, 0.51};
+    double neededIngredients[4] = {4, 8, 2, 2.5};
     double ownedIngredients[4];
     string questions[4] = {
         "How many red onion rings do you have?\n",
-        "How many cucumber do you have?\n",
-        "How many ounces of diced roasted peppers do you have?\n",
+        "How many cucumber slices do you have?\n",
+        "How many ounces of diced roasted pepper do you have?\n",
         "How many ounces of hummus do you have?\n"
     };
     for (int i = 0; i < 4; i++) {
@@ -93,15 +93,15 @@ void veggie() {
     }
     bool canMake = true;
     for (int i = 0; i < 4; i++) {
-        if (ownedIngredients[i] != neededIngredients[i]) {
+        if (ownedIngredients[i] < neededIngredients[i]) {
             canMake = false;
             break;
         }
     }
     if (canMake) {
-        cout << "You can make a Veggie sandwich." << endl;
+        cout << "You can make a veggie sandwich." << endl;
     } else {
-        cout << "You don't have enough for a Veggie sandwich." << endl;
+        cout << "You don't have enough for a veggie sandwich." << endl;
     }
 }
 

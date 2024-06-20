@@ -28,7 +28,12 @@ int main() {
     string input;
     getline(cin, input);
 
-    cout << flipCase(input, input.length());
+    if (input.length() == 0) {
+        cout << "Enter a non-empty string" << endl;
+        return 1;
+    }
+
+    cout << flipCase(input, input.length()) << endl;
 
     return 0;
 
