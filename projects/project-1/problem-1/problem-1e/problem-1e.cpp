@@ -23,7 +23,7 @@ int main() {
     int width = 450;
     int height = 300;
 
-    ofstream outFile("../problem-1/problem-1e/problem1e.ppm");
+    ofstream outFile("../problem-1e/problem1e.ppm");
     printFileHeader(outFile, width, height);
 
     for (int i = 0; i < height; i++) {

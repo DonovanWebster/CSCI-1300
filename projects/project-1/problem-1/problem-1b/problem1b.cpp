@@ -18,7 +18,7 @@ int main() {
     int width = 100;
     int height = 100;
 
-    ofstream outFile("../problem-1/problem-1b/problem1b.pgm");
+    ofstream outFile("../problem-1b/problem1b.pgm");
     printFileHeader(outFile, width, height);
 
     for (int i = 0; i < height; i++) {
