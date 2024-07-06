@@ -4,14 +4,11 @@
 
 using namespace std;
 
-void printFileHeader(ofstream &file, const int width, const int height) {
+void print(ofstream &file, int arr[][300][3], const int width, const int height) {
     file << "P3" << endl;
     file << width << " " << height << endl;
     file << 255 << endl;
-}
 
-void print(ofstream &file, int arr[][300][3], const int width, const int height) {
-    printFileHeader(file, width, height);
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
             string line = "";
@@ -152,9 +149,7 @@ int main() {
     fillSpokes(arr, width, height);
 
     ofstream outFile("../problem-1f/problem1f.ppm");
-
     print(outFile, arr, width, height);
-
     outFile.close();
 
     return 0;
