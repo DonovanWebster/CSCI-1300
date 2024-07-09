@@ -17,40 +17,51 @@ int split(string inputString, char separator, string arr[], int size) {
             count++;
         }
     }
+
     if (count == 0) {
         arr[0] = inputString;
         return 1;
     }
-    
-    for (int i = 0; i < count; i++) {
-        if (i > size) {
-            return -1;
-        }
-        int j = indeces[0];
-        if (i == 0) {
-            j = 0;
-        }
-        for (j; j < indeces[i]; j++) {
-            if (inputString[j] != separator) {
-                arr[i].push_back(inputString[j]);
-            }
-        }
+
+    int end = count + 1;
+
+    if (count >= size) {
+        end = size;
     }
 
+    indeces[count] = inputString.length();
+    for (int i = 0; i < end; i++) {
+        int start, len;
+        if (i == 0) {
+            start = 0;
+            len = indeces[0];
+        } else {
+            start = indeces[i-1]+1;
+            len = indeces[i] - start;
+        }
+        arr[i] = inputString.substr(start, len);
+    }
+
+    if (end == size) {
+        return -1;
+    }
+    
     return count;
 
 }
 
 int main() {
 
-string testcase = "ABCDEFG";
-char separator = ' ';
-int size = 3;
+string testcase = "Bangkok,Berlin,Birmingham,Bogota,Busan,Baton Rouge,Beaumont,Boise,Budapest";
+char separator = ',';
+int size = 5;
 string arr[size];
 // numSplits is the value returned by split
 int numSplits = split(testcase, separator, arr, size);
 cout << "Function returned value: " << numSplits << endl;
-cout << "arr[0]:"<< arr[0] << endl;
+for (int i=0 ;i < size; i++){
+  cout << "arr["<< i << "]:" << arr[i] << endl;
+}
 
     return 0;
 
