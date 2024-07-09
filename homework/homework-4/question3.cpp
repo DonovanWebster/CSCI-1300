@@ -25,7 +25,7 @@ int split(string inputString, char separator, string arr[], int size) {
 
     int end = count + 1;
 
-    if (count >= size) {
+    if (count > size) {
         end = size;
     }
 
@@ -42,19 +42,19 @@ int split(string inputString, char separator, string arr[], int size) {
         arr[i] = inputString.substr(start, len);
     }
 
-    if (end == size) {
+    if (count > size) {
         return -1;
     }
     
-    return count;
+    return count+1;
 
 }
 
 int main() {
 
-string testcase = "Bangkok,Berlin,Birmingham,Bogota,Busan,Baton Rouge,Beaumont,Boise,Budapest";
+string testcase = "RST,UVW,XYZ";
 char separator = ',';
-int size = 5;
+int size = 3;
 string arr[size];
 // numSplits is the value returned by split
 int numSplits = split(testcase, separator, arr, size);
