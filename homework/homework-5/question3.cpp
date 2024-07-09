@@ -45,12 +45,12 @@ int split(string inputString, char separator, string arr[], int size) {
     if (count > size) {
         return -1;
     }
-    
+
     return count+1;
 
 }
 
-int readOrders(string filename) {
+int readData(string filename, string characters[], int attributes[][3], int arrSize, int splits) {
     ifstream fin(filename);
     if (!fin.is_open()) {
         cout << "Could not open file." << endl;
@@ -58,27 +58,33 @@ int readOrders(string filename) {
     }
 
     string line;
-    int numOrders = 0;
-    string arr[3] = {};
-    while (getline(fin, line)) {
-        if (line != "") {
-            if (split(line, '-', arr, 3) == 3) {
-                numOrders++;
+    int count = 0;
+    string arr[4] = {};
+    while (getline(fin, line) && count < arrSize) {
+        if (split(line, '-', arr, 4) == splits) {
+            characters[count] = arr[0];
+            for (int i = 1; i < 4; i++) {
+                attributes[count][i-1] = stoi(arr[i]);
             }
+            count++;
         }
     }
     fin.close();
-    return numOrders;
+    return count;
+
 }
 
 int main() {
 
+    string characters[3];
+    int attributes[3][3];
+    
     // test 1
-    assert(readOrders("../data_files/bakery_orders.txt") == 4);
+    assert(readData("../data_files/game_samples.txt", characters, attributes, 3, 4) == 3);
 
     // test 2
     // expected output: Could not open file.
-    assert(readOrders("../data_files/imaginary_file.txt") == -1);
+    assert(readData("../data_files/imaginary_file.txt", characters, attributes, 3, 4) == -1);
 
     return 0;
 
