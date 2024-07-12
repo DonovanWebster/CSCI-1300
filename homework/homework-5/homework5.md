@@ -1,6 +1,6 @@
 #### **CSCI 1300 CS1: Starting Computing: Homework 5**
 #### **Rege - Summer 2024**
-#### ** Due: Friday, July 5 by 11:59pm MST **
+#### ** Due: Friday, July 12 by 11:59pm MST **
 
 
 <br/>
@@ -539,51 +539,51 @@ Could not open file.
 
 Your file should be named videoGameStats.cpp and should also include a main function that tests your readData() function. Once you have finished developing and testing your solution in VSCode you should head over to the CodeRunner on Canvas and paste only your **split()** and **readData()** functions into the answer box for question 3.
 
-## Question 4 (16 points) : Computing Score <a name="question4"></a>
+## Question 4 (16 points) : Computing Volume <a name="question4"></a>
 
-Once you've successfully implemented and tested **readData**, write a function **calcOverallScore**. To calculate an overall score for each character, take the average of the max health, max stamina, and special skill value using the 2D array populated by **readData**. For example, the overall score for characterA from the **game_samples.txt** file would be:
 
-```
-character A overall score: 83.
-```
+Create a cpp function to read a file and calculate the volume of a cuboid (length x width x height). Each file will have three lines: 
 
-The specifications for calcOverallScore are listed below.
-* **calcOverallScore** function specifications:
-    * The function name: **calcOverallScore**
-    * The function parameters for this character:
-        * `string` **characters[]**: the array of strings containing the names of the characters
-        * `int` **attributes[][3]**: the 2D array of integers containing the character attributes. You should assume there are only 3 columns
-        * `int` **numCharacters**: the number of characters in the file
-        * `int` **numAtts**: number of attributes
-    * The function has no return variables, rather it prints the overall score for each of the characters to 1 decimal place (use `setprecision`) found in the game_samples.txt file.
+*length \<double\>*\
+*width \<double\>*\
+*height \<double\>*
 
-**Sample run 1**
+Your function should be called **calcVolume**. It take one string input parameter for the file and needs to return the volume (double).\
+If any of the values in the file are not positive, print out "**Need a positive value to calculate volume**" and return -1.\
+If the file cannot be opened, print out "**Could not open file**" and return -1.\
+The following headers have been included: <iostream>, <fstream> and <string>. You do not need to include them again.
 
-Function call:
-```cpp
-string filename = "game_sample.txt";
-// max number of splits
-int maxSplits = 4;
-// number of orders
-int numCharacters = 3;
-// number of attributes
-int numAtts = 3;
-// call read data function
-string characters[numCharacters];
-int attributes[numCharacters][3];
-int numLines = readData(filename, characters, attributes, numCharacters, maxSplits);
-if (numLines != -1)
-{
-    calcOverallScore(characters, attributes, numLines, numAtts);
-}
-```
-Output:
-```
-characterA overall score: 83.0.
-characterB overall score: 84.0.
-characterD overall score: 82.7.
-```
-Your file should be named computeScore.cpp and should also include a main function that tests your calcOverallScore() function. Once you have finished developing and testing your solution in VSCode you should head over to the CodeRunner on Canvas and paste only your **split()**, **readData()**  and **calcOverallScore()** functions into the answer box for question 4.
+*Example file:*
+
+    length 24.3
+    width 29
+    height 2
+
+Function will return: 1895.4
+
+
+
+*Example file:*
+
+    length 10.4
+    width -1.5
+    height 2.9
+
+Standard Output: Cannot calculate volume with non-positive value\
+Function will return: -1
+
+
+**Note**:
+We have supplied you with the split() function you've been using for the past few homeworks. This function may be used to solve the problem but **it is not absolutely required to solve this problem**. You can use stringstream or any other method to solve this problem unlike your homeworks. 
+
+**For Example:**
+| Test | Input | Result |
+| --- | --- | --- |
+| //test case 1 <br> cin >> filename; <br> cout << calcVolume(filename) << endl; <br> return 0; | volume.txt | 1895.4 |
+| //test case 2 <br> cin >> filename; <br> cout << calcVolume(filename) << endl; <br> return 0; | does-not-exist.txt | Could not open file <br> -1 |
+
+
+
 
 
 # Overview <a name="submissions"></a>
