@@ -24,11 +24,11 @@ void fillRectangles(int arr[][300][3], const int colors[][3], const int width, c
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
             int firstIndex;
-            if (i < rectHeight) {
+            if (i < rectHeight) { // first rectangle
                 firstIndex = 0;
-            } else if (i < 2 * rectHeight) {
+            } else if (i < 2 * rectHeight) { // second rectangle
                 firstIndex = 1;
-            } else {
+            } else { // third rectangle
                 firstIndex = 2;
             }
             for (int k = 0; k < 3; k++) {
@@ -64,9 +64,10 @@ int main() {
     };
     int width = 450;
     int height = 300;
+    int rectHeight = 100; // height of a colored rectangle
     int fileArr[450][300][3];
 
-    fillRectangles(fileArr, COLORS, width, height, 100);
+    fillRectangles(fileArr, COLORS, width, height, rectHeight);
     fillCircle(fileArr, NAVY_BLUE, 45, width, height);
 
     ofstream outFile("../problem-1e/problem1e.ppm");

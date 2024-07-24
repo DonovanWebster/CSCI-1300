@@ -11,24 +11,24 @@ void printHeader(ofstream &file, const int width, const int height) {
 }
 
 bool isInSet(complex<double> c, double r, int &itr, const int MAX_ITR) {
-    complex<double> z = 0;
-    double abs_val = 0;
+    complex<double> z = 0; // current number in the sequence
+    double abs_val = 0; // aboslute value of z
     do {
         abs_val = sqrt(pow(real(z), 2) + pow(imag(z), 2));
         z = pow(z, 2) + c;
         itr++;
     } while (abs_val <= r && itr <= MAX_ITR);
     if (abs_val <= r) {
-        return true;
+        return true; // reached max iterations but still in the set
     }
-    return false;
+    return false; // not in the set
 }
 
 int main() {
 
     int h = 500, w = 500;
     double zoom = 2.0, radius = 2.0;
-    int itr = 0;
+    int itr = 0; // counter for the number of iterations of the sequence
     const int MAX_ITR = 255;
     ofstream fout("../problem-3c/problem-3c.ppm");
     printHeader(fout, w, h);
@@ -42,6 +42,7 @@ int main() {
             if (isInSet(c, radius, itr, MAX_ITR)) {
                 fout << "0 0 0 ";
             } else {
+                // creates a purple hue
                 string r = to_string(itr * 4) + " ";
                 string g = to_string(itr * 2) + " ";
                 string b = to_string(itr * 8) + " ";

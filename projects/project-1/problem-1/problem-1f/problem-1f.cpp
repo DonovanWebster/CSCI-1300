@@ -61,6 +61,7 @@ void toPolar(int x, int y, double &r, double &theta) {
         return;
     }
     theta = atan(double(y)/double(x));
+    // adjust theta based on the quadrant
     if (x < 0) {
         theta += pi;
     } else if (y < 0) {
@@ -76,15 +77,15 @@ double radians(double deg) {
 bool isInSpoke(double r, double inner, double outer, double theta, double deg, double dist) {
     double start;
     if (deg == radians(20)) {
-        start = radians(20);
+        start = radians(20); // starting angle for white spokes
     } else if (deg == radians(30)) {
-        start = radians(15);
+        start = radians(15); // staring angle for thick black spokes
     } else {
-        start = radians(27);
+        start = radians(27); // starting angles for thin black spokes
     }
     bool firstSpoke = (theta >= deg) && (theta <= (start + deg));
-    if (deg == radians(20)) {
-        start = 2 * dist;
+    if (deg == radians(20)) { // get starting angle of next spoke
+        start = 2 * dist; // need different initial jump for white spokes
     } else {
         start += (deg + dist);
     }
@@ -98,7 +99,7 @@ bool isInSpoke(double r, double inner, double outer, double theta, double deg, d
     start += (deg + dist);
     bool sixthSpoke = (theta >= start) && (theta <= (start + deg));
 
-    bool inRange = (r >= inner) && (r <= outer);
+    bool inRange = (r >= inner) && (r <= outer); // checks if position is within any spoke
 
     return (firstSpoke || secondSpoke || thirdSpoke || fourthSpoke || fifthSpoke || sixthSpoke) && inRange;
 }
@@ -113,13 +114,13 @@ void fillSpokes(int arr[][300][3], const int width, const int height) {
             
             double r, theta;
             toPolar(x, y, r, theta);
-            // inner spokes
+            // white spokes
             if (isInSpoke(r, 34, 68, theta, radians(20), radians(40))) {
                 for (int k = 0; k < 3; k++) {
                     arr[j][i][k] = WHITE[k];
                 }
             }
-            // middle and outer spokes
+            // thick and thin black spokes
             if (isInSpoke(r, 84, 93, theta, radians(30), radians(30)) || isInSpoke(r, 93, 102, theta, radians(6), radians(54))) {
                 for (int k = 0; k < 3; k++) {
                     arr[j][i][k] = BLACK[k];

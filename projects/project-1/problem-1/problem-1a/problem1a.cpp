@@ -12,7 +12,7 @@ int main() {
 
     int width = 100;
     int height = 100;
-    int sideLength = 50;
+    int sideLength = 50; // side length of the square in pixels
 
     ofstream outFile("../problem-1a/problem1a.pgm");
     printFileHeader(outFile, width, height);
@@ -30,6 +30,7 @@ int main() {
         }
         outFile << endl;
     }
+    outFile.close();
 
     return 0;
 

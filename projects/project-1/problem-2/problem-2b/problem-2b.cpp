@@ -1,7 +1,6 @@
 #include <fstream>
 #include <vector>
 #include <iostream>
-#include <chrono>
 
 using namespace std;
 
@@ -150,20 +149,19 @@ void printBlocks(ofstream &file, Block block, const int imgWidth) {
     }
 }
 
+// this takes exponentially longer to run the larger the image gets, approximate times below:
+// width = 81, 0.7 seconds
+// width = 243, 46 seconds
+// widht = 729, 57 minutes
+// this statement will be removed if I have time to fix this
 int main(int argc, char* argv[]) {
-
-    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 
     int width = stoi(argv[1]);
 
     ofstream outFile("../problem-2b/problem2b.ppm");
-    // print(outFile, fileArr, width);
     Block block = Block(width/3, width/3, width/3);
     printBlocks(outFile, block, width);
     outFile.close();
-
-    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-    std::cout << "Time difference (sec) = " <<  (std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count()) /1000000.0  <<std::endl;
 
     return 0;
 
