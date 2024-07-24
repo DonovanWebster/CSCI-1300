@@ -1,6 +1,7 @@
 #include <fstream>
 #include <vector>
 #include <iostream>
+#include <chrono>
 
 using namespace std;
 
@@ -44,19 +45,69 @@ class Block {
 };
 
 bool isBlockPos(Block block, int x, int y) {
-    bool isInX = block.x <= x && x <= block.x + (block.width - 1);
-    bool isInY = block.y <= y && y <= block.y + (block.width - 1);
-    if (isInX && isInY) {
-        return true;
-    }
-    if (block.width > 1) {
-        for (int i = 0; i < 8; i++) {
-            if (isBlockPos(block.blocks[i], x, y)) {
+    
+    // bool isInX = block.x <= x && x <= block.x + (block.width - 1);
+    // bool isInY = block.y <= y && y <= block.y + (block.width - 1);
+    // if (isInX && isInY) {
+    //     return true;
+    // }
+
+    //if (block.width > 1) {
+        bool top = y < block.y;
+        bool bottom = y > block.y + (block.width - 1);
+
+        bool left = x < block.x;
+        bool right = x > block.x + (block.width - 1);
+
+        int idx;
+
+        if (top) {
+            if (left) {
+                idx = 0;
+            } else if (right) {
+                idx = 5;
+            } else {
+                idx = 3;
+            }
+        } else if (bottom) {
+            if (left) {
+                idx = 2;
+            } else if (right) {
+                idx = 7;
+            } else {
+                idx = 4;
+            }
+        } else {
+            if (left) {
+                idx = 1;
+            } else if (right) {
+                idx = 6;
+            } else {
                 return true;
-            };
+            }
         }
-    }
-    return false;
+
+        if (block.width > 1) {
+        return isBlockPos(block.blocks[idx], x, y);
+        }
+        return false;
+    //}
+
+    //return false;
+
+    // bool isInX = block.x <= x && x <= block.x + (block.width - 1);
+    // bool isInY = block.y <= y && y <= block.y + (block.width - 1);
+    // if (isInX && isInY) {
+    //     return true;
+    // }
+    // if (block.width > 1) {
+    //     for (int i = 0; i < 8; i++) {
+    //         if (isBlockPos(block.blocks[i], x, y)) {
+    //             return true;
+    //         };
+    //     }
+    // }
+    // return false;
 }
 
 void printBlocks(ofstream &file, Block block, const int imgWidth) {
@@ -119,11 +170,13 @@ void printBlocks(ofstream &file, Block block, const int imgWidth) {
 
 int main(int argc, char* argv[]) {
 
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+    
     // const int WHITE = 255;
     // const int BLACK = 0;
 
-    // int width = stoi(argv[1]);
-    int width = 2187;
+    int width = stoi(argv[1]);
+    // int width = 9;
     // int fileArr[243][243];
 
     // int startPos[] = {width/3, width/3};
@@ -132,8 +185,12 @@ int main(int argc, char* argv[]) {
 
     ofstream outFile("../problem-2a/problem2a.pgm");
     // print(outFile, fileArr, width);
-    printBlocks(outFile, Block(width/3, width/3, width/3), width);
+    Block block = Block(width/3, width/3, width/3);
+    printBlocks(outFile, block, width);
     outFile.close();
+
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+    std::cout << "Time difference (sec) = " <<  (std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count()) /1000000.0  <<std::endl;
 
     return 0;
 
